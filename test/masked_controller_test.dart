@@ -57,8 +57,8 @@ void main() {
     final String maskedString4 = '1!1!1';
 
     expect(mask.removeMaskFrom(string: maskedString), '555aaa111');
-    expect(mask.removeMaskFrom(string: maskedString2), 'abc');
-    expect(mask.removeMaskFrom(string: maskedString3), '123');
-    expect(mask.removeMaskFrom(string: maskedString4), '111');
+    expect(mask2.removeMaskFrom(string: maskedString2), 'abc');
+    expect(mask3.removeMaskFrom(string: maskedString3), '123');
+    expect(mask4.removeMaskFrom(string: maskedString4), '111');
   });
 }

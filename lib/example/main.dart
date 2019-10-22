@@ -27,7 +27,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final MaskedController _controller =
-      MaskedController(mask: Mask(mask: 'NNN.NNN.NNN-NN'));
+  MaskedController(mask: Mask(mask: 'NNN.NNN.NNN-NN'));
 
   @override
   void initState() {
@@ -39,11 +39,11 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: Center(
           child: Padding(
-        padding: EdgeInsets.all(16),
-        child: TextField(
-          controller: _controller,
-        ),
-      )),
+            padding: EdgeInsets.all(16),
+            child: TextField(
+              controller: _controller,
+            ),
+          )),
     );
   }
 
