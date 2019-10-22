@@ -3,6 +3,7 @@ library masked_controller;
 import 'package:flutter/material.dart';
 import 'package:masked_controller/mask.dart';
 import 'package:meta/meta.dart';
+import 'dart:io' show Platform;
 
 class MaskedController extends TextEditingController {
   MaskedController({@required Mask mask}) {
@@ -53,8 +54,14 @@ class MaskedController extends TextEditingController {
         mask.applyMaskTo(string: mask.removeMaskFrom(string: currentText));
 
     if (maskedText == null) {
-      update(text: _previewsText);
-      _moveCursorToEnd();
+      if (Platform.isAndroid) {
+        update(text: mask.removeMaskFrom(string: _previewsText));
+        _moveCursorToEnd();
+      } else {
+        _moveCursorToEnd();
+        update(text: mask.removeMaskFrom(string: _previewsText));
+      }
+
       return;
     }
 
@@ -69,7 +76,7 @@ class MaskedController extends TextEditingController {
   void _moveCursorTo({@required int position}) {
     final TextPosition textPosition = TextPosition(offset: position);
     final TextSelection textSelection =
-        TextSelection.fromPosition(textPosition);
+        TextSelection.collapsed(offset: position);
     value = value.copyWith(text: text, selection: textSelection);
   }
 
