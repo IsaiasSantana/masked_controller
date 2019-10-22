@@ -1,5 +1,6 @@
 # masked_controller
-
+ A controller to insert mask to textfield.
+ 
 ![sample](doc/gif.gif)
 
 ## Usage
@@ -25,3 +26,6 @@ To get the unsmaked value from controller, use the `unmaskedText` property:
 ```dart
 final String val = controller.unmaskedText;
 ```
+
+Inspired by:
+  https://github.com/benhurott/flutter-masked-text
