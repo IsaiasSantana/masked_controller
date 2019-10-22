@@ -5,7 +5,7 @@
 
 ## Install
 
-Follow this [GUIDE](https://pub.dev/packages/masked_controller#-installing-tab-)
+Follow this [guide](https://pub.dev/packages/masked_controller#-installing-tab-)
 
 ## Usage
 
