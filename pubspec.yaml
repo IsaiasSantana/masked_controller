@@ -1,6 +1,6 @@
 name: masked_controller
 description: A controller to insert mask to textfield.
-version: 1.0.0
+version: 1.0.1
 author: Isaías Santana <isds.santana@gmail.com>
 homepage: https://github.com/IsaiasSantana/masked_controller
 
