@@ -74,7 +74,6 @@ class MaskedController extends TextEditingController {
   }
 
   void _moveCursorTo({@required int position}) {
-    final TextPosition textPosition = TextPosition(offset: position);
     final TextSelection textSelection =
         TextSelection.collapsed(offset: position);
     value = value.copyWith(text: text, selection: textSelection);
