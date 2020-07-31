@@ -11,6 +11,7 @@ class Mask extends BaseMask {
   final String mask;
   final String _letterSymbol = 'A';
   final String _numberSymbol = 'N';
+  final String _alphanumericSymbol = 'X';
   final RegExp _onlyLetterRegex = RegExp(r'[a-zA-Z]');
   final RegExp _onlyNumbersRegex = RegExp(r'[0-9]');
 
@@ -29,11 +30,16 @@ class Mask extends BaseMask {
     }
   }
 
+  bool _isValidAlphanumeric({@required String character}) {
+    return _isValidLetter(character: character) ||
+        _isValidNumber(character: character);
+  }
+
   @override
   String applyMaskTo({String string}) {
     if (string == null) return null;
 
-    if (string.length >= mask.length) return null;
+    if (string.length > mask.length) return null;
 
     String formatedValue = "";
     int maskIndex = 0;
@@ -48,7 +54,9 @@ class Mask extends BaseMask {
         if (character == maskSymbol) {
           formatedValue += character;
         } else {
-          while (maskSymbol != _letterSymbol && maskSymbol != _numberSymbol) {
+          while (maskSymbol != _letterSymbol &&
+              maskSymbol != _numberSymbol &&
+              maskSymbol != _alphanumericSymbol) {
             formatedValue += maskSymbol;
             maskSymbol = mask[++maskIndex];
           }
@@ -57,8 +65,11 @@ class Mask extends BaseMask {
               _isValidLetter(character: character);
           final isValidNumber = maskSymbol == _numberSymbol &&
               _isValidNumber(character: character);
+          final isValidAlphanumeric = maskSymbol == _alphanumericSymbol &&
+              _isValidAlphanumeric(character: character);
 
-          if (!isValidLetter && !isValidNumber) return null;
+          if (!isValidLetter && !isValidNumber && !isValidAlphanumeric)
+            return null;
 
           formatedValue += character;
         }
